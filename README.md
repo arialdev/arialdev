@@ -1,112 +1,54 @@
-💫 This is a free template to make your portfolio website using **[Astro 2.0](https://astro.build/blog/astro-2/) + [Tailwind CSS](https://tailwindcss.com/)**.
+Hi 👋 My name is Álvaro Rivas
+=============================
 
-### Dark mode
-![Dark mode](https://github.com/veranikabarel/astro-portfolio/assets/48052206/240ab82d-8896-412e-8f52-5cf10d42b1db)
-### Light mode
-![Light mode](https://github.com/veranikabarel/astro-portfolio/assets/48052206/bfa88b30-6dcf-4d5f-bf28-efc3caa27d0f)
-### Lighthouse report
-![Lighthouse report](https://github.com/veranikabarel/astro-portfolio/assets/48052206/e7ad23a4-1a9b-477e-a13e-a321ce6bd3d6)
+Full-Stack engineer
+-------------------
 
-## Table of Contents
+I studied Computer Science and Software Engineering. I love doing geek stuff and talking about movies.
 
-- [Demo](#demo)
-- [Features](#features)
-- [Project structure](#project-structure)
-- [Commands](#commands)
-- [Contributing](#contributing)
-- [Credits](#credits)
+* 🌍  I'm based in Madrid, Spain.
+* ✉️  You can contact me at [alvarora12@gmail.com](mailto:alvarora12+github@gmail.com).
+* 🧠  I'm learning React.
+* 🤝  I'm open to collaborating on cool Open Source projects.
 
-## Demo
+<a href="https://www.twitter.com/arialdev" target="_blank" rel="noreferrer"><img
+src="https://img.shields.io/twitter/follow/arialdev?logo=twitter&style=for-the-badge&color=0891b2&labelColor=1c1917"
+/></a><a href="https://www.github.com/arialdev" target="_blank" rel="noreferrer"><img
+src="https://img.shields.io/github/followers/arialdev?logo=github&style=for-the-badge&color=0891b2&labelColor=1c1917" /></a>
 
-📌 [https://astro-fe-portfolio.netlify.app/](https://astro-fe-portfolio.netlify.app/)
+### Skills
 
-## Features
+<p align="left">
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/javascript-colored.svg" width="36" height="36" alt="Javascript" /></a>
+<a href="https://angular.io/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/angularjs-colored.svg" width="36" height="36" alt="Angular" /></a>
+<a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/typescript-colored.svg" width="36" height="36" alt="Typescript" /></a>
+<a href="https://nodejs.org/en/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nodejs-colored.svg" width="36" height="36" alt="NodeJS" /></a>
+<a href="https://www.oracle.com/java/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/java-colored.svg" width="36" height="36" alt="Java" /></a>
+<a href="https://developer.mozilla.org/en-US/docs/Glossary/HTML5" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/html5-colored.svg" width="36" height="36" alt="HTML5" /></a>
+<a href="https://sass-lang.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/sass-colored.svg" width="36" height="36" alt="Sass" /></a>
+<a href="https://www.w3.org/TR/CSS/#css" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/css3-colored.svg" width="36" height="36" alt="CSS3" /></a>
+<a href="https://expressjs.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/express-colored-dark.svg" width="36" height="36" alt="Express" /></a>
+<a href="https://www.mysql.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/mysql-colored.svg" width="36" height="36" alt="MySQL" /></a>
+<a href="https://getbootstrap.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/bootstrap-colored.svg" width="36" height="36" alt="Bootstrap" /></a>
+</p>
 
-✔️ Integration with **Tailwind CSS** ([@astrojs/tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/)) supporting **Dark mode**.
 
-✔️ Uses the following integrations:
+### Socials
 
-- @astrojs/mdx
-- @astrojs/image
-- @astrojs/tailwind - with prettier class sorting plugin
-- @astro-icon
-- @astro-seo
-- @astro-navbar
+<p align="left">
+<a href="https://www.twitter.com/arialdev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/twitter.svg" width="32" height="32" /></a>
+<a href="https://www.github.com/arialdev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github-dark.svg" width="32" height="32" /></a>
+<a href="https://www.linkedin.com/in/alvaro-rivas" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/linkedin.svg" width="32" height="32" /></a>
+<a href="https://www.stackoverflow.com/users/12274824/arialdev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/stackoverflow.svg" width="32" height="32" /></a>
+<a href="https://discord.com/users/arialdev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/discord.svg" width="32" height="32" /></a>
+<a href="https://www.twitch.tv/arialdev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/twitch.svg" width="32" height="32" /></a></p>
 
-✔️([@Playwright](https://github.com/microsoft/playwright)) e2e tests are setted up.
+### Badges
 
-🔜 Blog with frontmatter (title, description, author, date, image, tags) and RSS feed, sitemap and robots.txt
+<b>My GitHub Stats</b>
 
-🔜 404 error page
+<a href="http://www.github.com/arialdev"><img src="https://github-readme-stats.vercel.app/api?username=arialdev&show_icons=true&hide=prs,issues,contribs&title_color=0891b2&text_color=ffffff&icon_color=0891b2&bg_color=1c1917&hide_border=true&show_icons=true" alt="arialdev's GitHub stats" /></a>
 
-## Project Structure
+<b>Top Repositories</b>
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```
-/
-├── public/
-│   └── favicon.ico
-|   ├── hero.png
-|   └── ...
-├── src/
-|   ├── assets/
-|   |   ├── images/
-│   │   |   ├── hero.png
-|   |   |   └── ...
-│   ├── components/
-│   │   ├── ui/
-│   │   |   ├── BackToTop.astro
-|   |   |   └── ...
-│   │   ├── About.astro
-│   │   ├── Contact.astro
-|   |   └── ...
-│   ├── content/
-│   │   ├── projects/
-│   │   │   ├── project-1.md
-│   │   │   ├── project-1.md
-│   │   │   └── ...
-│   │   └-- config.ts
-│   ├── layouts/
-│   │   ├── Layout.astro
-│   ├── pages/
-│   │   ├── index.astro
-│   ├── tests/
-│   │   ├── index.spec.ts
-├── package.json
-├── astro.config.mjs
-└── ...
-```
-
-Astro looks for `.astro`, `.md` or `.mdx` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-`src/components/` is where we put any Astro components and similarly `src/layouts/` for layouts.
-
-Images can be placed in `src/images/`.
-
-Blog and documentation content are created as collections of Markdown or MDX files in `src/content`.
-
-Any static assets, eg. images, can be placed in the `public/` directory.
-
-## Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command             | Action                                             |
-| :------------------ | :------------------------------------------------- |
-| `yarn`              | Installs dependencies                              |
-| `yarn dev`          | Starts local dev server at `localhost:3000`        |
-| `yarn build`        | Build your production site to `./dist/`            |
-| `yarn preview`      | Preview your build locally, before deploying       |
-| `yarn astro ...`    | Run CLI commands like `astro add`, `astro preview` |
-| `yarn astro --help` | Get help using the Astro CLI                       |
-| `yarn test:e2e`     | Run Playwright tests                               |
-
-## Contributing
-
-If you have any idea, suggestions or find any bugs, feel free to open a discussion, an issue or create a pull request.
-That would be very useful for all of us and we would be happy to listen and take action.
-
-## Credits
-
-Assets designed by (Freepik)[www.freepik.com].
+<div width="100%" align="center"><a href="https://github.com/arialdev/vocabulaire" align="left"><img align="left" width="45%" src="https://github-readme-stats.vercel.app/api/pin/?username=arialdev&repo=vocabulaire&title_color=0891b2&text_color=ffffff&icon_color=0891b2&bg_color=1c1917&hide_border=true&locale=en" /></a><a href="https://github.com/arialdev/awards-predictions" align="right"><img align="right" width="45%" src="https://github-readme-stats.vercel.app/api/pin/?username=arialdev&repo=awards-predictions&title_color=0891b2&text_color=ffffff&icon_color=0891b2&bg_color=1c1917&hide_border=true&locale=en" /></a></div><br /><br /><br /><br /><br /><br /><br />
