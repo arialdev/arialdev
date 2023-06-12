@@ -12,6 +12,7 @@
 		// Astro will directly run your TypeScript code, no transpilation needed.
 		"noEmit": true,
 		"strictNullChecks": true,
+		"noImplicitAny": true,
 		"baseUrl": "src",
 		"paths": {
 			"@lib/*": ["lib/*"],
