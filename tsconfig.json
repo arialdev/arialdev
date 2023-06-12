@@ -4,7 +4,7 @@
 		"target": "ES2022",
 		"module": "ES2022",
 		// Enable node-style module resolution, for things like npm package imports.
-		"moduleResolution": "node16",
+		"moduleResolution": "node",
 		// Enable JSON imports.
 		"resolveJsonModule": true,
 		// Enable stricter transpilation for better output.
@@ -15,19 +15,31 @@
 		"noImplicitAny": true,
 		"baseUrl": "src",
 		"paths": {
-			"@lib/*": ["lib/*"],
-			"@utils/*": ["utils/*"],
-			"@components/*": ["components/*"],
-			"@layouts/*": ["layouts/*"],
-			"@assets/*": ["assets/*"],
-			"@pages/*": ["pages/*"]
+			"@lib/*": [
+				"lib/*"
+			],
+			"@utils/*": [
+				"utils/*"
+			],
+			"@components/*": [
+				"components/*"
+			],
+			"@layouts/*": [
+				"layouts/*"
+			],
+			"@assets/*": [
+				"assets/*"
+			],
+			"@pages/*": [
+				"pages/*"
+			]
 		},
 		"allowUnreachableCode": false,
 		"allowUnusedLabels": false,
 		"alwaysStrict": true,
 		"noImplicitOverride": true,
 		"noImplicitReturns": true,
-		"noPropertyAccessFromIndexSignature":true,
+		"noPropertyAccessFromIndexSignature": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"strictBindCallApply": true,
