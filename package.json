@@ -1,14 +1,32 @@
 {
-	"name": "astro-portfolio",
-	"type": "module",
+	"name": "arialdev",
+	"description": "Portofolio for Álvaro Rivas (a.k.a. arialdev)",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "astro dev",
 		"start": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
+		"check": "astro check",
 		"astro": "astro",
 		"test": "playwright test"
+	},
+	"type": "module",
+	"author": "Álvaro Rivas <alvarora12@gmail.com> (https://arial.dev)",
+	"keywords": [
+		"portfolio",
+		"astro",
+		"react",
+		"typescript"
+	],
+	"repository": "github:arialdev/arialdev",
+	"homepage": "https://arial.dev",
+	"bugs": {
+		"url": "https://github.com/arialdev/arialdev/issues",
+		"email": "alvarora12@gmail.com"
+	},
+	"engines": {
+		"node": ">18",
+		"npm": "9"
 	},
 	"dependencies": {
 		"@astrojs/image": "^0.16.7",
