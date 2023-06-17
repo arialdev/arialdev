@@ -1,6 +1,6 @@
 ---
 import heroImage from '@assets/images/hero.png';
-import { Image } from '@astrojs/image/components';
+import { Picture } from '@astrojs/image/components';
 import Button from '@components/ui/Button.astro';
 ---
 
@@ -19,7 +19,14 @@ import Button from '@components/ui/Button.astro';
 		</div>
 	</div>
 	<div data-testid="hero-img" class="mb-10 flex w-1/2 items-center justify-center">
-		<Image
+		<Picture
+			src={heroImage}
+			alt="Coding boy"
+			sizes="600px"
+			widths={[600]}
+			aspectRatio="4:4"
+		/>
+		<!-- <Image
 			src={heroImage}
 			alt="Coding boy"
 			aspectRatio="4:4"
@@ -27,6 +34,6 @@ import Button from '@components/ui/Button.astro';
 			width={600}
 			height={600}
 			loading="eager"
-		/>
+		/> -->
 	</div>
 </section>
