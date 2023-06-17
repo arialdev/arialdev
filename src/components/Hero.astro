@@ -11,7 +11,8 @@ import Button from '@components/ui/Button.astro';
 	<div class="mb-10 flex flex-col items-center lg:mb-0 lg:w-1/2">
 		<div>
 			<h1 class="mb-10 font-monospace text-3xl text-black dark:text-white lg:text-5xl">
-				Hi! My name is <span class="text-orange whitespace-nowrap">Álvaro Rivas</span> and I am a software engineer based in Madrid.
+				Hi! My name is <span class="text-orange whitespace-nowrap">Álvaro Rivas</span> and I am a software
+				engineer based in Madrid.
 			</h1>
 		</div>
 		<div class="mb-10">
@@ -25,15 +26,9 @@ import Button from '@components/ui/Button.astro';
 			sizes="600px"
 			widths={[600]}
 			aspectRatio="4:4"
-		/>
-		<!-- <Image
-			src={heroImage}
-			alt="Coding boy"
-			aspectRatio="4:4"
-			format="png"
-			width={600}
-			height={600}
+			formats={['avif', 'webp', 'jpeg']}
 			loading="eager"
-		/> -->
+			,
+		/>
 	</div>
 </section>
