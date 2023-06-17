@@ -22,11 +22,11 @@ test.describe('ui test', () => {
 
 	test('website is shown correctly', async ({ page }) => {
 		await expect(page).toHaveURL('http://localhost:3000/');
-		await expect(page).toHaveTitle('A Very Descriptive Title');
+		await expect(page).toHaveTitle('Álvaro Rivas');
 		const metaDescription = page.locator("meta[name='description']");
 		await expect(metaDescription).toHaveAttribute(
 			'content',
-			'A heavily optimized description full of well-researched keywords.'
+			"Welcome to Álvaro Rivas' personal website. Here you can know who I am and what do I do."
 		);
 		const html = page.locator('html');
 		await expect(html).toHaveClass('scroll-smooth');
