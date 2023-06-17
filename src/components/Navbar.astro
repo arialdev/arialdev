@@ -1,7 +1,7 @@
 ---
-import Button from '@components/ui/Button.astro';
 import ToggleTheme from '@components/ui/ToggleTheme.astro';
 import { Astronav, MenuIcon, MenuItems } from 'astro-navbar';
+import Link from './ui/Link.astro';
 
 const menuitems = [
 	{
@@ -22,7 +22,13 @@ const menuitems = [
 <header data-testId="header" class="my-5 flex flex-col items-center justify-between lg:flex-row">
 	<Astronav>
 		<div class="flex w-full items-center justify-between lg:w-auto">
-			<Button size={'sm'} name="Download CV">Download CV</Button>
+			<Link
+				size={'sm'}
+				name="Download CV"
+				href="https://res.cloudinary.com/duemlwqqt/image/upload/fl_attachment/v1687045440/%C3%81lvaro%20Rivas%20CV.pdf"
+			>
+				Download CV
+			</Link>
 			<div class="block lg:hidden">
 				<MenuIcon class="h-4 w-4 text-black dark:text-white" />
 			</div>
