@@ -1,7 +1,7 @@
 ---
 import heroImage from '@assets/images/hero.png';
 import { Picture } from '@astrojs/image/components';
-import Button from '@components/ui/Button.astro';
+import Link from './ui/Link.astro';
 ---
 
 <section
@@ -16,7 +16,7 @@ import Button from '@components/ui/Button.astro';
 			</h1>
 		</div>
 		<div class="mb-10">
-			<Button style={'primary'} size={'lg'} class={'flex'} name="learn more">Learn more</Button>
+			<Link style={'primary'} size={'lg'} class={'flex'} name="learn more" href="#about">Learn more</Link>
 		</div>
 	</div>
 	<div data-testid="hero-img" class="mb-10 flex w-1/2 items-center justify-center">
