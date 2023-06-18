@@ -1,7 +1,7 @@
 ---
 inProgress: false
-title: Project title
-img_alt: project image alt text
-link: https://github.com/veranikabarel?tab=repositories
-tags: ['React', 'CSS', 'Typescript']
+title: Awards Predictions
+img_alt: Awards Predictions
+link: https://github.com/arialdev/Awards-Predictions
+tags: ['Angular', 'Node', 'MongoDB']
 ---
