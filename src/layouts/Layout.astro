@@ -36,6 +36,11 @@ const { title = 'Álvaro Rivas | Software engineer' } = Astro.props as LayoutPro
 				content-visibility: auto;
 			}
 		</style>
-		<script src="/scripts/devtools-detector.js" type="module"/>
+		<script lang="js">
+			console.log(
+				`%cWell, well, well, looks like I've stumbled upon a hacker! In that case, forget about this dull website and head over to https://terminal.arial.dev.`,
+				'color: blue; font-family:serif; font-size: 20px'
+			);
+		</script>
 	</body>
 </html>
