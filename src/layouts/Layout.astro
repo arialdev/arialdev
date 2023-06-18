@@ -16,6 +16,25 @@ const { title = 'Álvaro Rivas | Software engineer' } = Astro.props as LayoutPro
 		<SEO
 			title={title}
 			description="Welcome to Álvaro Rivas' personal website. Here you can know who I am and what do I do."
+			openGraph={{
+				basic: {
+					title,
+					type: 'website',
+					image:
+						'https://res.cloudinary.com/duemlwqqt/image/upload/v1687050665/image_2023-06-18_031105248_habfwq.png',
+				},
+			}}
+			twitter={{
+				card: 'summary',
+				creator: '@arialdev',
+				title: title,
+				image:
+					'https://res.cloudinary.com/duemlwqqt/image/upload/v1687050665/image_2023-06-18_031105248_habfwq.png',
+				imageAlt: "Álvaro Rivas' pic",
+				description:
+					"Welcome to Álvaro Rivas' personal website. Here you can know who I am and what do I do.",
+			}}
+			canonical="https://arial.dev"
 		/>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
