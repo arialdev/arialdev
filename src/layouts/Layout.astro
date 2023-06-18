@@ -36,14 +36,6 @@ const { title = 'Álvaro Rivas | Software engineer' } = Astro.props as LayoutPro
 				content-visibility: auto;
 			}
 		</style>
-		<script type="module">
-			import devtools from './node_modules/devtools-detect/index.js';
-			if (devtools.isOpen) {
-				console.log(
-					`%cWell, well, well, looks like I've stumbled upon a hacker! In that case, forget about this dull website and head over to https://terminal.arial.dev.`,
-					'color: blue; font-family:serif; font-size: 20px'
-				);
-			}
-		</script>
+		<script src={'src/layouts/devtools-detector.js'} type="module"/>
 	</body>
 </html>
