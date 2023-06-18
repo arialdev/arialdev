@@ -3,5 +3,5 @@ inProgress: false
 title: Project-Euler
 img_alt: Project Euler
 link: https://github.com/arialdev/Project-Euler
-tags: ['Maths', 'Algorithms', 'JavaScript']
+tags: ['Math', 'Algorithms', 'JavaScript']
 ---
