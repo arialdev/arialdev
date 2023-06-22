@@ -16,7 +16,9 @@ import Link from './ui/Link.astro';
 			</h1>
 		</div>
 		<div class="mb-10">
-			<Link style={'primary'} size={'lg'} class={'flex'} name="learn more" href="#about">Learn more</Link>
+			<Link style={'primary'} size={'lg'} class={'flex'} name="learn more" href="#about">
+				Learn more
+			</Link>
 		</div>
 	</div>
 	<div data-testid="hero-img" class="mb-10 flex w-1/2 items-center justify-center">
@@ -28,6 +30,8 @@ import Link from './ui/Link.astro';
 			aspectRatio="4:4"
 			formats={['avif', 'webp', 'jpeg']}
 			loading="eager"
+			width={600}
+			height={600}
 			,
 		/>
 	</div>
