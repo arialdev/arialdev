@@ -47,6 +47,7 @@
 		"strictPropertyInitialization": true,
 		"useUnknownInCatchVariables": true,
 		"outDir": "dist",
-		"allowSyntheticDefaultImports": true
+		"allowSyntheticDefaultImports": true,
+		"types": ["vite-plugin-pwa/info"]
 	}
 }
