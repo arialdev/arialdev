@@ -25,14 +25,13 @@ import Link from './ui/Link.astro';
 		<Picture
 			src={heroImage}
 			alt="Coding boy"
-			sizes="600px"
-			widths={[600]}
+			sizes="(max-width: 720px) 600px, 1200px"
+			widths={[600, 1200]}
 			aspectRatio="4:4"
 			formats={['avif', 'webp', 'jpeg']}
 			loading="eager"
 			width={600}
 			height={600}
-			,
 		/>
 	</div>
 </section>
