@@ -11,7 +11,7 @@
 		"test": "playwright test"
 	},
 	"type": "module",
-	"author": "Álvaro Rivas <alvarora12@gmail.com> (https://arial.dev)",
+	"author": "Álvaro Rivas <contact@arial.dev> (https://alvarorivas.dev)",
 	"keywords": [
 		"portfolio",
 		"astro",
@@ -22,7 +22,7 @@
 	"homepage": "https://arial.dev",
 	"bugs": {
 		"url": "https://github.com/arialdev/arialdev/issues",
-		"email": "alvarora12@gmail.com"
+		"email": "contact@arial.dev"
 	},
 	"engines": {
 		"node": ">=18",

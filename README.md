@@ -7,7 +7,7 @@ Full-Stack engineer
 I studied Computer Science and Software Engineering. I love doing geek stuff and talking about movies.
 
 * 🌍  I'm based in Madrid, Spain.
-* ✉️  You can contact me at [alvarora12@gmail.com](mailto:alvarora12+github@gmail.com).
+* ✉️  You can contact me at [contact@arial.dev](mailto:contact+github@arial.dev).
 * 🧠  I'm learning React.
 * 🤝  I'm open to collaborating on cool Open Source projects.
 
