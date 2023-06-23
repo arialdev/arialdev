@@ -1,6 +1,6 @@
 ---
 import projectImage from '@assets/images/project.png';
-import { Image } from '@astrojs/image/components';
+import { Picture } from '@astrojs/image/components';
 import Tags from '@components/ui/Tags.astro';
 interface Props {
 	url?: string;
@@ -20,14 +20,16 @@ const { url = '#', alt = 'Project image', title = 'Project title', tags = ['Tags
 	>
 		<a href={url} aria-label="link to project" target="_blank">
 			<div class="relative flex items-end overflow-hidden rounded-xl">
-				<Image
+				<Picture
 					src={projectImage}
 					alt={alt}
+					sizes="(max-width: 720px) 400px, 1000px"
+					widths={[600, 1000]}
 					aspectRatio="4:4"
-					format="png"
+					formats={['avif', 'webp', 'jpeg']}
+					loading="lazy"
 					width={400}
 					height={400}
-					loading="eager"
 				/>
 			</div>
 			<div class="mt-1 p-2">
