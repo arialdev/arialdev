@@ -41,7 +41,7 @@ test.describe('ui test', () => {
 		]);
 		await expect(page.getByTestId('card').first().locator('a')).toHaveAttribute(
 			'href',
-			'https://github.com/arialdev/sre-agent'
+			'https://sre-agent.arial.dev/'
 		);
 		await expect(page.getByTestId('contact')).toBeVisible();
 		await expect(page.getByTestId('footer')).toBeVisible();

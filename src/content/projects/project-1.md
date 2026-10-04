@@ -2,6 +2,6 @@
 inProgress: false
 title: SRE Agent
 img_alt: Illustration for SRE Agent
-link: https://github.com/arialdev/sre-agent
+link: https://sre-agent.arial.dev/
 tags: ['AI', 'RAG', 'Kubernetes']
 ---
