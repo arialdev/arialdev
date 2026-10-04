@@ -2,11 +2,13 @@
 	"name": "arialdev",
 	"description": "Portofolio for Álvaro Rivas (a.k.a. arialdev)",
 	"version": "0.0.1",
+	"packageManager": "pnpm@12.9.1",
 	"scripts": {
 		"start": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
 		"check": "astro check",
+		"lint": "oxlint .",
 		"astro": "astro",
 		"test": "playwright test"
 	},
@@ -26,7 +28,7 @@
 	},
 	"engines": {
 		"node": "24.x",
-		"npm": ">=9.6.5"
+		"pnpm": ">=12"
 	},
 	"dependencies": {
 		"@tailwindcss/vite": "^4.3.3",
@@ -41,6 +43,7 @@
 		"@iconify-json/simple-icons": "^1.2.98",
 		"@playwright/test": "^1.63.0",
 		"@types/node": "^24.19.1",
+		"oxlint": "^1.86.0",
 		"prettier": "^3.9.9",
 		"prettier-plugin-astro": "^1.1.0",
 		"prettier-plugin-tailwindcss": "^0.8.1",

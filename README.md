@@ -58,15 +58,16 @@ src="https://img.shields.io/github/followers/arialdev?logo=github&style=for-the-
 This site uses Astro 7 and Tailwind CSS 4. Use Node.js 24 LTS (see `.nvmrc`).
 
 ```sh
-npm ci
-npm run start
+pnpm install --frozen-lockfile
+pnpm start
 ```
 
 Before submitting changes, run:
 
 ```sh
-npm run check
-npm run build
-npx playwright install chromium
-npm test
+pnpm lint
+pnpm check
+pnpm build
+pnpm exec playwright install chromium
+pnpm test
 ```

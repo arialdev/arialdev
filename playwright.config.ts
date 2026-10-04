@@ -16,7 +16,7 @@ export default defineConfig({
 		{ name: 'mobile-chromium', use: { ...devices['Pixel 5'] } },
 	],
 	webServer: {
-		command: 'npm run start -- --host 127.0.0.1 --port 3000 --ignore-lock',
+		command: 'pnpm start --host 127.0.0.1 --port 3000 --ignore-lock',
 		url: 'http://127.0.0.1:3000/',
 		reuseExistingServer: !process.env['CI'],
 	},
