@@ -1,0 +1,31 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+	--color-orange: #e06330;
+	--font-sans: 'Inter', sans-serif;
+	--font-monospace: 'Inconsolata', monospace;
+	--breakpoint-xs: 30rem;
+	/* The previous Tailwind theme used font sizes without paired line heights. */
+	--text-xs--line-height: 1.5;
+	--text-sm--line-height: 1.5;
+	--text-base--line-height: 1.5;
+	--text-lg--line-height: 1.5;
+	--text-xl--line-height: 1.5;
+	--text-2xl--line-height: 1.5;
+	--text-3xl--line-height: 1.5;
+	--text-4xl--line-height: 1.5;
+	--text-5xl--line-height: 1.5;
+}
+
+@layer base {
+	h2 {
+		letter-spacing: 0.025em;
+		font-weight: bold;
+	}
+
+	li {
+		letter-spacing: 0.025em;
+	}
+}

@@ -1,6 +1,6 @@
 ---
 import projectImage from '@assets/images/project.png';
-import { Picture } from '@astrojs/image/components';
+import { Picture } from 'astro:assets';
 import Tags from '@components/ui/Tags.astro';
 interface Props {
 	url?: string;
@@ -25,8 +25,7 @@ const { url = '#', alt = 'Project image', title = 'Project title', tags = ['Tags
 					alt={alt}
 					sizes="(max-width: 720px) 400px, 1000px"
 					widths={[600, 1000]}
-					aspectRatio="4:4"
-					formats={['avif', 'webp', 'jpeg']}
+					formats={['avif', 'webp']}
 					loading="lazy"
 					width={400}
 					height={400}

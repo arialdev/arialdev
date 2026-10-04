@@ -1,6 +1,6 @@
 ---
 import heroImage from '@assets/images/hero.png';
-import { Picture } from '@astrojs/image/components';
+import { Picture } from 'astro:assets';
 import Link from './ui/Link.astro';
 ---
 
@@ -27,8 +27,7 @@ import Link from './ui/Link.astro';
 			alt="Coding boy"
 			sizes="(max-width: 720px) 600px, 1200px"
 			widths={[600, 1200]}
-			aspectRatio="4:4"
-			formats={['avif', 'webp', 'jpeg']}
+			formats={['avif', 'webp']}
 			loading="eager"
 			width={600}
 			height={600}
