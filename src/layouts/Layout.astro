@@ -8,7 +8,9 @@ export interface LayoutProps {
 	title: string;
 }
 
-const { title = 'Álvaro Rivas | Software engineer' } = Astro.props as LayoutProps;
+const { title = 'Álvaro Rivas | Senior Software Engineer' } = Astro.props as LayoutProps;
+const description =
+	'Álvaro Rivas is a senior software engineer in Madrid specializing in React, microfrontends, distributed systems and AI.';
 ---
 
 <!DOCTYPE html>
@@ -16,7 +18,7 @@ const { title = 'Álvaro Rivas | Software engineer' } = Astro.props as LayoutPro
 	<head>
 		<SEO
 			title={title}
-			description="Welcome to Álvaro Rivas' personal website. Here you can know who I am and what do I do."
+			description={description}
 			openGraph={{
 				basic: {
 					title,
@@ -32,8 +34,7 @@ const { title = 'Álvaro Rivas | Software engineer' } = Astro.props as LayoutPro
 				image:
 					'https://res.cloudinary.com/duemlwqqt/image/upload/v1687050665/image_2023-06-18_031105248_habfwq.png',
 				imageAlt: "Álvaro Rivas' pic",
-				description:
-					"Welcome to Álvaro Rivas' personal website. Here you can know who I am and what do I do.",
+				description,
 			}}
 			canonical="https://alvarorivas.dev"
 		/>

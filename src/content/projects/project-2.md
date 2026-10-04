@@ -1,7 +1,7 @@
 ---
 inProgress: false
-title: Awards Predictions
-img_alt: Awards Predictions
-link: https://github.com/arialdev/Awards-Predictions
-tags: ['Angular', 'NodeJS', 'MongoDB']
+title: Vocabulaire
+img_alt: Illustration for Vocabulaire
+link: https://github.com/arialdev/vocabulaire
+tags: ['Ionic', 'Angular', 'Languages']
 ---

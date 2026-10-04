@@ -1,7 +1,7 @@
 ---
 inProgress: false
-title: Project-Euler
-img_alt: Project Euler
-link: https://github.com/arialdev/Project-Euler
-tags: ['Math', 'Algorithms', 'JavaScript']
+title: Awards Predictions
+img_alt: Illustration for Awards Predictions
+link: https://github.com/arialdev/Awards-Predictions
+tags: ['Angular', 'NodeJS', 'MongoDB']
 ---

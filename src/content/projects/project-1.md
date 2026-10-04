@@ -1,7 +1,7 @@
 ---
 inProgress: false
-title: Vocabulaire
-img_alt: Vocabulaire image alt text
-link: https://github.com/arialdev/vocabulaire
-tags: ['Ionic', 'Angular', 'Languages']
+title: SRE Agent
+img_alt: Illustration for SRE Agent
+link: https://github.com/arialdev/sre-agent
+tags: ['AI', 'RAG', 'Kubernetes']
 ---

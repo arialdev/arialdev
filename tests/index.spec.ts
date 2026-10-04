@@ -26,16 +26,23 @@ test.describe('ui test', () => {
 		const metaDescription = page.locator("meta[name='description']");
 		await expect(metaDescription).toHaveAttribute(
 			'content',
-			"Welcome to Álvaro Rivas' personal website. Here you can know who I am and what do I do."
+			'Álvaro Rivas is a senior software engineer in Madrid specializing in React, microfrontends, distributed systems and AI.'
 		);
 		const html = page.locator('html');
 		await expect(html).toHaveClass(/scroll-smooth/);
 		await expect(page.getByTestId('hero')).toBeVisible();
 		await expect(page.getByTestId('about')).toBeVisible();
-		await expect(page.getByTestId('about').locator('p').last()).toContainText(
-			'preferences: the JavaScript ecosystem, microservices/microfrontends architectures and software quality'
-		);
+		await expect(page.getByTestId('about')).toContainText('MSc in Artificial Intelligence');
 		await expect(page.getByTestId('projects')).toBeVisible();
+		await expect(page.getByTestId('card').locator('h3')).toHaveText([
+			'SRE Agent',
+			'Vocabulaire',
+			'Awards Predictions',
+		]);
+		await expect(page.getByTestId('card').first().locator('a')).toHaveAttribute(
+			'href',
+			'https://github.com/arialdev/sre-agent'
+		);
 		await expect(page.getByTestId('contact')).toBeVisible();
 		await expect(page.getByTestId('footer')).toBeVisible();
 		const projectImage = page.getByTestId('card').first().locator('img');
