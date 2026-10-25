@@ -11,9 +11,7 @@ I studied Computer Science and Software Engineering. I love doing geek stuff and
 * 🧠  I'm learning React.
 * 🤝  I'm open to collaborating on cool Open Source projects.
 
-<a href="https://www.twitter.com/arialdev" target="_blank" rel="noreferrer"><img
-src="https://img.shields.io/twitter/follow/arialdev?logo=twitter&style=for-the-badge&color=0891b2&labelColor=1c1917"
-/></a><a href="https://www.github.com/arialdev" target="_blank" rel="noreferrer"><img
+<a href="https://www.github.com/arialdev" target="_blank" rel="noreferrer"><img
 src="https://img.shields.io/github/followers/arialdev?logo=github&style=for-the-badge&color=0891b2&labelColor=1c1917" /></a>
 
 ### Skills
@@ -36,7 +34,7 @@ src="https://img.shields.io/github/followers/arialdev?logo=github&style=for-the-
 ### Socials
 
 <p align="left">
-<a href="https://www.twitter.com/arialdev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/twitter.svg" width="32" height="32" /></a>
+
 <a href="https://www.github.com/arialdev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github-dark.svg" width="32" height="32" /></a>
 <a href="https://www.linkedin.com/in/alvaro-rivas" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/linkedin.svg" width="32" height="32" /></a>
 <a href="https://www.stackoverflow.com/users/12274824/arialdev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/stackoverflow.svg" width="32" height="32" /></a>
@@ -55,7 +53,7 @@ src="https://img.shields.io/github/followers/arialdev?logo=github&style=for-the-
 
 ### Portfolio development
 
-This site uses Astro 7 and Tailwind CSS 4. Use Node.js 24 LTS (see `.nvmrc`).
+The portfolio uses Astro, React islands, strict TypeScript 6, and native CSS. Use Node.js 26.12.1 (see `.nvmrc`) and PNPM 12.15.0 (pinned in `package.json`).
 
 ```sh
 pnpm install --frozen-lockfile
@@ -68,6 +66,36 @@ Before submitting changes, run:
 pnpm lint
 pnpm check
 pnpm build
-pnpm exec playwright install chromium
 pnpm test
 ```
+
+`pnpm check` runs Astro-aware type checking. `pnpm test` runs Playwright and axe against the production preview, using installed Google Chrome for desktop and mobile emulation. Run `pnpm build` first. The test runner starts the preview if it is not already running.
+
+For a production preview:
+
+```sh
+pnpm preview --host 127.0.0.1 --port 4321
+```
+
+Astro 7 runs the preview as a background process; use `pnpm exec astro preview stop` to stop it.
+
+For a mobile Lighthouse audit against the running preview:
+
+```sh
+mkdir -p test-results/lighthouse
+pnpm audit:mobile --quiet --output-path=./test-results/lighthouse/mobile
+```
+
+The audit uses installed Google Chrome and writes local JSON/HTML reports. Run three cold navigation audits when collecting acceptance measurements. `pnpm test` clears the test-results directory, so collect performance reports after running tests.
+
+Portfolio content and its source references live in `src/data/portfolio.ts`. Metadata and structured data live in `src/layouts/PortfolioLayout.astro`; the production origin is configured in `astro.config.mjs`. The sitemap is a native static endpoint. No contact backend or visitor-time content API is required.
+
+The visual direction is inspired by [Bandi Revanth’s portfolio](https://bandirevanth.github.io/). All portfolio components, CSS, project artwork, and sharing artwork were authored for this implementation; the code-bracket branding restores the previous portfolio logo.
+
+See [the implementation and validation record](docs/portfolio-validation.md) for versions, checks, measurements, and remaining validation work.
+
+The interface closely follows the reference’s single glass panel and overlay menu. Hash links select Home, About, Projects, and Contact; all content remains readable with JavaScript disabled. `#experience` opens the career tabs within About.
+
+The portrait source is `src/assets/images/alvaro-rivas.jpg`, relocated from the user-provided `me.jpg` with its original image bytes preserved. Both portrait components import it through Astro's image pipeline, which generates optimized WebP variants with explicit dimensions and appropriate loading priorities. Commit this source asset with the project. Poppins is hosted locally in `public/fonts/` under the accompanying SIL Open Font License.
+
+The hero subtitle cycles through the `heroPhrases` collection in `src/data/portfolio.ts` using native TypeScript in `TypingRole.astro`. Each entry includes its a/an article. Reduced motion, hidden-view suspension, stable layout, and a static screen-reader/no-JavaScript fallback are built in. The footer and spoken-language line are intentionally omitted.

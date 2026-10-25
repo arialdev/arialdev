@@ -1,0 +1,49 @@
+---
+import { Image } from 'astro:assets';
+import portrait from '../assets/images/alvaro-rivas.jpg';
+---
+<div class="portrait-hover" data-portrait-hover>
+  <div class="portrait-circle">
+    <Image src={portrait} width={1080} height={1080} fit="cover" position="south" format="webp" quality={80} alt="Álvaro Rivas" class="hero-photo" priority/>
+  </div>
+</div>
+<script>
+  const portrait = document.querySelector<HTMLElement>('[data-portrait-hover]');
+  if (portrait) {
+    const motion = matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
+    let frame: number | undefined;
+    let clientX = 0;
+    let clientY = 0;
+    const properties = ['--portrait-rotate-x', '--portrait-rotate-y', '--portrait-shift-x', '--portrait-shift-y'];
+
+    function reset() {
+      if (frame !== undefined) cancelAnimationFrame(frame);
+      frame = undefined;
+      for (const property of properties) portrait!.style.removeProperty(property);
+    }
+    function render() {
+      frame = undefined;
+      // Read the stationary wrapper so the tilt cannot feed back into pointer position.
+      const bounds = portrait!.getBoundingClientRect();
+      if (!bounds.width || !bounds.height) return;
+      const x = Math.max(-1, Math.min(1, (clientX - bounds.left) / bounds.width * 2 - 1));
+      const y = Math.max(-1, Math.min(1, (clientY - bounds.top) / bounds.height * 2 - 1));
+      portrait!.style.setProperty('--portrait-rotate-x', `${-y * 7}deg`);
+      portrait!.style.setProperty('--portrait-rotate-y', `${x * 7}deg`);
+      portrait!.style.setProperty('--portrait-shift-x', `${x * 4}px`);
+      portrait!.style.setProperty('--portrait-shift-y', `${y * 4}px`);
+    }
+    function follow(event: PointerEvent) {
+      if (!motion.matches || event.pointerType === 'touch') return;
+      clientX = event.clientX;
+      clientY = event.clientY;
+      if (frame === undefined) frame = requestAnimationFrame(render);
+    }
+    portrait.addEventListener('pointerenter', follow);
+    portrait.addEventListener('pointermove', follow);
+    portrait.addEventListener('pointerleave', reset);
+    portrait.addEventListener('pointercancel', reset);
+    motion.addEventListener('change', reset);
+    window.addEventListener('blur', reset);
+  }
+</script>

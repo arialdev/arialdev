@@ -1,0 +1,64 @@
+---
+import { heroPhrases, profile } from '../data/portfolio';
+---
+<div class="home-role typing-role" data-phrases={JSON.stringify(heroPhrases)}>
+  <p class="sr-only">I am a {profile.role}.</p>
+  <div class="role-line" aria-hidden="true">
+    <p class="role-visual">I am <span data-role-article>a</span> <strong data-role-text>{profile.role}</strong><span class="role-caret">|</span></p>
+    {heroPhrases.map((phrase) => <p class="role-reserve">I am {phrase.article} <strong>{phrase.text}</strong><span class="role-caret">|</span></p>)}
+  </div>
+</div>
+<script>
+  import type { HeroPhrase } from '../data/portfolio';
+  const role = document.querySelector<HTMLElement>('.typing-role');
+  const text = role?.querySelector<HTMLElement>('[data-role-text]');
+  const article = role?.querySelector<HTMLElement>('[data-role-article]');
+  if (role && text && article) {
+    const phrases: [HeroPhrase, ...HeroPhrase[]] = JSON.parse(role.dataset.phrases!);
+    const motion = matchMedia('(prefers-reduced-motion: reduce)');
+    let phraseIndex = 0;
+    let length = phrases[0].text.length;
+    let deleting = true;
+    let timer: number | undefined;
+
+    function schedule(delay: number) {
+      timer = window.setTimeout(tick, delay);
+    }
+    function tick() {
+      const phrase = (phrases[phraseIndex] ?? phrases[0]).text;
+      length += deleting ? -1 : 1;
+      text!.textContent = phrase.slice(0, length);
+      if (deleting && length === 0) {
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        article!.textContent = (phrases[phraseIndex] ?? phrases[0]).article;
+        deleting = false;
+        schedule(280);
+      } else if (!deleting && length === phrase.length) {
+        deleting = true;
+        schedule(1800);
+      } else {
+        schedule(deleting ? 40 : 75);
+      }
+    }
+    function sync() {
+      window.clearTimeout(timer);
+      if (motion.matches) {
+        phraseIndex = 0;
+        length = phrases[0].text.length;
+        deleting = true;
+        text!.textContent = phrases[0].text;
+        article!.textContent = phrases[0].article;
+      }
+      const running = !motion.matches && !document.hidden
+        && document.documentElement.dataset.view === 'home' && !document.body.classList.contains('menu-open');
+      role!.dataset.state = running ? 'running' : 'paused';
+      if (running) schedule(1800);
+    }
+    motion.addEventListener('change', sync);
+    document.addEventListener('visibilitychange', sync);
+    const observer = new MutationObserver(sync);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-view'] });
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    sync();
+  }
+</script>

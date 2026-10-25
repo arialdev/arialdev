@@ -1,18 +1,51 @@
 ---
-import About from '@components/About.astro';
-import Contact from '@components/Contact.astro';
-import Hero from '@components/Hero.astro';
-import Projects from '@components/Projects.astro';
-import BackToTop from '@components/ui/BackToTop.astro';
-import Layout from '@layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import portrait from '../assets/images/alvaro-rivas.jpg';
+import Layout from '../layouts/PortfolioLayout.astro';
+import Career from '../components/islands/Career';
+import Projects from '../components/islands/Projects';
+import SocialLinks from '../components/SocialLinks.astro';
+import TypingRole from '../components/TypingRole.astro';
+import HeroPortrait from '../components/HeroPortrait.astro';
+import { cvDownloadUrl, profile, skills } from '../data/portfolio';
 ---
-
 <Layout>
-	<main>
-		<Hero />
-		<About />
-		<Projects />
-		<Contact />
-		<BackToTop />
-	</main>
+  <section class="view-panel home-panel" id="home" data-view-panel tabindex="-1" aria-labelledby="hero-heading">
+    <div class="home-copy">
+      <p class="hello">Hello, I’m</p>
+      <h1 id="hero-heading">Álvaro Rivas</h1>
+      <TypingRole/>
+      <div class="home-actions"><a class="button" href="#about">About me!</a><a class="button" href="#projects">Projects</a></div>
+      <SocialLinks label="Find me online"/>
+    </div>
+    <div class="home-picture"><HeroPortrait/></div>
+  </section>
+  <section class="view-panel content-panel about-panel" id="about" data-view-panel tabindex="-1" aria-labelledby="about-heading">
+    <h2 class="section-title" id="about-heading">About me</h2>
+    <div class="about-layout">
+      <div class="about-picture"><div class="about-photo-frame">
+        <Image src={portrait} width={720} height={720} widths={[360, 720]} sizes="(max-width: 767px) 280px, 380px" fit="cover" position="south" format="webp" quality={85} alt="Álvaro sitting beside a window overlooking a mountain landscape" loading="lazy"/>
+      </div><p class="about-location">Based in <strong>{profile.location}</strong></p></div>
+      <div class="about-copy">
+        <p>I’m a senior software engineer. At Nexthink, I build scalable web applications and distributed systems, specialising in React, microfrontends, and Module Federation.</p>
+        <p>I’ve led the migration of 40+ microfrontends and improved React performance by up to 70%. I recently completed an MSc in Artificial Intelligence, where I built an AI-powered SRE agent for incident diagnosis and remediation guidance.</p>
+        <h3>Skills</h3>
+        <ul class="skills">{skills.flatMap((group) => group.items).map((skill) => <li>{skill}</li>)}</ul>
+        <div id="experience" tabindex="-1"><Career client:visible/></div>
+        <div class="about-actions"><a class="button" href={cvDownloadUrl} download="Alvaro-Rivas-CV.pdf">Download CV <span class="pdf-label">PDF</span></a><a class="button" href={profile.github}>View my full profile!</a></div>
+      </div>
+    </div>
+  </section>
+  <section class="view-panel content-panel projects-panel" id="projects" data-view-panel tabindex="-1" aria-labelledby="projects-heading">
+    <h2 class="section-title" id="projects-heading">Recent work &amp; projects</h2>
+    <div class="projects-intro"><p>Personal projects, from web applications to applied AI.</p><a class="button" href={profile.github}>View all projects</a></div>
+    <Projects client:visible/>
+  </section>
+  <section class="view-panel content-panel contact-panel" id="contact" data-view-panel tabindex="-1" aria-labelledby="contact-heading">
+    <h2 class="section-title" id="contact-heading">Contact me!</h2>
+    <div class="contact-layout">
+      <div class="contact-intro"><h3>Let’s build something together.</h3><p>Have a project, an interesting problem, or just want to say hello? I’d love to hear from you.</p><a class="button" href={`mailto:${profile.email}`}>Say hello!</a></div>
+      <div class="contact-socials"><h3>Follow me!</h3><SocialLinks label="Social and blog links"/></div>
+    </div>
+  </section>
 </Layout>
