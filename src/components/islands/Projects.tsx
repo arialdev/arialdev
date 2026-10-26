@@ -53,14 +53,14 @@ export default function Projects() {
         <h3>{project.name}</h3><p>{project.summary}</p>
         <ul className="tags" aria-label={`${project.name} technologies`}>{project.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
         <details className="project-fallback" hidden={enhanced}><summary>Project details</summary><p>{project.detail}</p></details>
-        <div className="project-actions"><a href={project.url}>{project.linkLabel}</a></div>
+        <div className="project-actions"><a href={project.url} target="_blank" rel="noopener noreferrer">{project.linkLabel}</a></div>
       </div>
     </article>)}</div>
     {selected && <dialog ref={dialog} className="project-dialog" aria-labelledby="project-dialog-title" onClose={onClose} onKeyDown={containFocus}>
       <button type="button" className="dialog-close" aria-label="Close project details" onClick={() => dialog.current?.close()}>×</button>
       <span className="eyebrow">{selected.category}</span><h2 id="project-dialog-title">{selected.name}</h2>
       <p>{selected.detail}</p><ul className="tags">{selected.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
-      <a className="button button-primary" href={selected.url}>{selected.linkLabel}</a>
+      <a className="button button-primary" href={selected.url} target="_blank" rel="noopener noreferrer">{selected.linkLabel}</a>
     </dialog>}
   </>;
 }

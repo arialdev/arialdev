@@ -32,13 +32,13 @@ import { cvDownloadUrl, profile, skills } from '../data/portfolio';
         <h3>Skills</h3>
         <ul class="skills">{skills.flatMap((group) => group.items).map((skill) => <li>{skill}</li>)}</ul>
         <div id="experience" tabindex="-1"><Career client:visible/></div>
-        <div class="about-actions"><a class="button" href={cvDownloadUrl} download="Alvaro-Rivas-CV.pdf">Download CV <span class="pdf-label">PDF</span></a><a class="button" href={profile.github}>View my full profile!</a></div>
+        <div class="about-actions"><a class="button" href={cvDownloadUrl} target="_blank" rel="noopener noreferrer" download="Alvaro-Rivas-CV.pdf">Download CV <span class="pdf-label">PDF</span></a><a class="button" href={profile.github} target="_blank" rel="noopener noreferrer">View my full profile!</a></div>
       </div>
     </div>
   </section>
   <section class="view-panel content-panel projects-panel" id="projects" data-view-panel tabindex="-1" aria-labelledby="projects-heading">
     <h2 class="section-title" id="projects-heading">Recent work &amp; projects</h2>
-    <div class="projects-intro"><p>Personal projects, from web applications to applied AI.</p><a class="button" href={profile.github}>View all projects</a></div>
+    <div class="projects-intro"><p>Personal projects, from web applications to applied AI.</p><a class="button" href={profile.github} target="_blank" rel="noopener noreferrer">View all projects</a></div>
     <Projects client:visible/>
   </section>
   <section class="view-panel content-panel contact-panel" id="contact" data-view-panel tabindex="-1" aria-labelledby="contact-heading">
