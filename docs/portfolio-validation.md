@@ -2,6 +2,8 @@
 
 Change: `rebuild-personal-portfolio`. Validated 2026-10-26 against the production build at `http://127.0.0.1:4321/`. Nothing has been deployed.
 
+The later [accessibility audit](accessibility-audit.md) records the initial findings against `40fde81` and their subsequent corrections: darker accent text, native level-one headings in enhanced views, and synchronous project-dialog dismissal with focus return. All 26 tests pass against development and production; isolated keyboard regression passes 6/6. Sampled normal-text contrast is at least 5.12:1 across the tested views, scroll positions, menu, dialog, and hover state. Astro's negative-tabindex false positives remain documented. Axe's `incomplete` contrast results are supplemented by a dedicated rendered-background regression test.
+
 ## Current design
 
 The interface closely follows the supplied reference: a full-height glass panel, pink-to-cyan gradient, blurred coloured circles, locally hosted Poppins, orange pill controls, circular portrait, and corner home/menu controls. With JavaScript, Home, About, Projects, and Contact share the panel; without JavaScript, all sections remain readable. The overlay menu supports keyboard use, focus management, browser history, and direct section hashes. About contains skills and the experience/education tabs; `#experience` remains a supported deep link.

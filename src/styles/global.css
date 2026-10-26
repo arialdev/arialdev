@@ -3,7 +3,7 @@
 @font-face { font-family: Poppins; font-style: normal; font-weight: 500; font-display: swap; src: url('/fonts/poppins-500-latin.woff2') format('woff2'); }
 @font-face { font-family: Poppins; font-style: normal; font-weight: 600; font-display: swap; src: url('/fonts/poppins-600-latin.woff2') format('woff2'); }
 
-:root { color-scheme: light; --ink: #18293c; --accent: #ad3300; --glass: rgb(255 255 255 / .25); --edge: rgb(255 255 255 / .4); }
+:root { color-scheme: light; --ink: #18293c; --accent: #842700; --glass: rgb(255 255 255 / .25); --edge: rgb(255 255 255 / .4); }
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-padding-top: 24px; scrollbar-gutter: stable; }
 body { margin: 0; min-width: 0; min-height: 100svh; padding: 35px 15px; font-family: Poppins, Arial, sans-serif; font-weight: 300; font-size: 1rem; line-height: 1.5; color: var(--ink); background: linear-gradient(135deg, #d6a3ad, #98dfe3); background-attachment: fixed; }
@@ -110,7 +110,7 @@ main { opacity: 1; visibility: visible; transition: opacity 220ms ease, visibili
 .about-location { margin-top: 20px; text-align: center; }
 .about-location strong { font-weight: 500; }
 .about-copy > p + p { margin-top: 15px; }
-.about-copy > h3 { font-size: 1.25rem; margin: 22px 0 18px; }
+.about-copy > [data-view-subheading] { font-size: 1.25rem; font-weight: 500; margin: 22px 0 18px; }
 .skills, .tags { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
 .skills li, .tags li { border-radius: 24px; border: 1px solid var(--edge); background: var(--glass); padding: 5px 15px; }
 .career { margin-top: 25px; }
@@ -146,7 +146,7 @@ main { opacity: 1; visibility: visible; transition: opacity 220ms ease, visibili
 .project-art { height: 220px; padding: 24px; position: relative; overflow: hidden; border: 1px solid var(--edge); border-radius: 10px; }
 .project-copy { padding-top: 20px; display: flex; flex-direction: column; flex: 1; }
 .project-category { font-size: 0.8125rem; display: flex; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
-.project-copy h3 { font-size: 1.25rem; margin-bottom: 16px; }
+.project-copy > :is(h2, h3) { font-size: 1.25rem; font-weight: 500; margin-bottom: 16px; }
 .project-copy > p { font-size: 0.9375rem; }
 .project-copy > .tags { margin-top: 18px; gap: 6px; }
 .project-copy > .tags li { font-size: 0.75rem; padding: 5px 10px; }
@@ -185,10 +185,10 @@ main { opacity: 1; visibility: visible; transition: opacity 220ms ease, visibili
 .award-type { display: block; font: 38px/1 Georgia, serif; letter-spacing: -.04em; margin-top: 55px; }
 .contact-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 60px; max-width: 950px; margin: 80px auto 0; }
 .contact-intro { text-align: center; }
-.contact-intro h3 { font-size: 1.5625rem; margin-bottom: 20px; }
+.contact-intro > [data-view-subheading] { font-size: 1.5625rem; font-weight: 500; margin-bottom: 20px; }
 .contact-intro p { margin-bottom: 25px; }
 .contact-socials { padding: 48px 20px; text-align: center; border: 1px solid var(--edge); border-radius: 24px; background: var(--glass); }
-.contact-socials h3 { font-size: 2rem; margin-bottom: 24px; }
+.contact-socials > [data-view-subheading] { font-size: 2rem; font-weight: 500; margin-bottom: 24px; }
 .contact-socials .social-links { justify-content: center; gap: 16px; margin-top: 0; }
 .contact-socials .social-links a { width: 72px; height: 72px; }
 .contact-socials .social-links svg { width: 28px; height: 28px; }

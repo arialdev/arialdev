@@ -25,6 +25,7 @@ function Artwork({ id }: { id: string }) {
 
 export default function Projects() {
   const enhanced = useEnhanced();
+  const ProjectHeading = enhanced ? 'h2' : 'h3';
   const [selected, setSelected] = useState<Project | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
   const trigger = useRef<HTMLButtonElement | null>(null);
@@ -34,7 +35,13 @@ export default function Projects() {
       dialog.current.querySelector<HTMLButtonElement>('button')?.focus();
     }
   }, [selected]);
-  function onClose() { setSelected(null); trigger.current?.focus(); }
+  function closeProject() {
+    // Finish dismissal in the cancel/click event, before another project can open.
+    // The native close event is queued and can otherwise clear a newer selection.
+    dialog.current?.close();
+    setSelected(null);
+    trigger.current?.focus({ preventScroll: true });
+  }
   function containFocus(event: KeyboardEvent<HTMLDialogElement>) {
     if (event.key !== 'Tab') return;
     const controls = dialog.current?.querySelectorAll<HTMLElement>('button:not([disabled]), a[href]');
@@ -50,14 +57,15 @@ export default function Projects() {
           aria-haspopup="dialog" onClick={(event) => { trigger.current = event.currentTarget; setSelected(project); }}/>}
       </div>
       <div className="project-copy"><div className="project-category"><span>{project.category}</span><span>{project.number}</span></div>
-        <h3>{project.name}</h3><p>{project.summary}</p>
+        <ProjectHeading>{project.name}</ProjectHeading><p>{project.summary}</p>
         <ul className="tags" aria-label={`${project.name} technologies`}>{project.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
         <details className="project-fallback" hidden={enhanced}><summary>Project details</summary><p>{project.detail}</p></details>
         <div className="project-actions"><a href={project.url} target="_blank" rel="noopener noreferrer">{project.linkLabel}</a></div>
       </div>
     </article>)}</div>
-    {selected && <dialog ref={dialog} className="project-dialog" aria-labelledby="project-dialog-title" onClose={onClose} onKeyDown={containFocus}>
-      <button type="button" className="dialog-close" aria-label="Close project details" onClick={() => dialog.current?.close()}>×</button>
+    {selected && <dialog ref={dialog} className="project-dialog" aria-labelledby="project-dialog-title"
+      onCancel={(event) => { event.preventDefault(); closeProject(); }} onKeyDown={containFocus}>
+      <button type="button" className="dialog-close" aria-label="Close project details" onClick={closeProject}>×</button>
       <span className="eyebrow">{selected.category}</span><h2 id="project-dialog-title">{selected.name}</h2>
       <p>{selected.detail}</p><ul className="tags">{selected.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
       <a className="button button-primary" href={selected.url} target="_blank" rel="noopener noreferrer">{selected.linkLabel}</a>

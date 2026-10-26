@@ -34,3 +34,4 @@ pnpm-debug.log*
 
 # Lighthouse
 portfolio-audits.json
+accessibility-audit.json

@@ -126,6 +126,13 @@ document.querySelector('.skip-link')?.addEventListener('click', (event) => {
 });
 
 if (hasViews) {
+  // Each enhanced view is a page; the static, continuous document keeps its H1/H2 hierarchy.
+  document.querySelectorAll('[data-view-heading], [data-view-subheading]').forEach((heading) => {
+    const replacement = document.createElement(heading.hasAttribute('data-view-heading') ? 'h1' : 'h2');
+    for (const attribute of heading.attributes) replacement.setAttribute(attribute.name, attribute.value);
+    replacement.append(...heading.childNodes);
+    heading.replaceWith(replacement);
+  });
   // Handle real anchors before their native scroll, including repeated Home selections.
   document.addEventListener('click', (event) => {
     if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;

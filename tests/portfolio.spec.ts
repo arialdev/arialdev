@@ -166,7 +166,7 @@ test('islands hydrate without errors and support keyboard interactions', async (
   await page.keyboard.press('Escape');
   await expect(dialog).not.toBeVisible();
   await expect(trigger).toBeFocused();
-  for (const name of ['Vocabulaire', 'Awards Predictions']) {
+  for (const name of ['Vocabulaire', 'Awards Predictions', 'SRE Agent', 'Vocabulaire', 'Awards Predictions']) {
     const image = page.getByRole('button', { name: `View project: ${name}` });
     await image.focus();
     await page.keyboard.press('Space');
@@ -174,6 +174,10 @@ test('islands hydrate without errors and support keyboard interactions', async (
     await page.keyboard.press('Escape');
     await expect(image).toBeFocused();
   }
+  await trigger.press('Enter');
+  await page.getByRole('button', { name: 'Close project details' }).click();
+  await expect(trigger).toBeFocused();
+  await expect(page.getByRole('dialog')).toHaveCount(0);
   expect(errors).toEqual([]);
 });
 
@@ -220,6 +224,8 @@ test('works without JavaScript, including both histories and project details', a
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: isMobile ? 390 : 1280, height: 900 } });
   const page = await context.newPage();
   await page.goto(baseURL ?? 'http://127.0.0.1:4321');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1);
+  await expect(page.getByRole('heading', { name: 'About me', exact: true, level: 2 })).toBeVisible();
   await expect(page.locator('[data-role-text]')).toHaveText('Senior Software Engineer');
   await expect(page.getByText('Nexthink', { exact: true })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'MSc in Artificial Intelligence' })).toBeVisible();
@@ -306,16 +312,17 @@ test('every section, menu, and project dialog pass automated accessibility check
   await page.goto('/');
   for (const name of ['Home', 'About', 'Contact', 'Projects'] as const) {
     if (name !== 'Home') await openSection(page, name);
-    const result = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22a', 'wcag22aa']).analyze();
+    await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1);
+    const result = await new AxeBuilder({ page }).analyze();
     expect(result.violations, `${name} accessibility`).toEqual([]);
   }
   await expect(page.getByRole('button', { name: 'View project: SRE Agent' })).toBeVisible();
   await page.locator('.project-image').first().click();
-  const modal = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22a', 'wcag22aa']).analyze();
+  const modal = await new AxeBuilder({ page }).analyze();
   expect(modal.violations).toEqual([]);
   await page.keyboard.press('Escape');
   await page.getByLabel('Navigation menu', { exact: true }).click();
-  const menu = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22a', 'wcag22aa']).analyze();
+  const menu = await new AxeBuilder({ page }).analyze();
   expect(menu.violations).toEqual([]);
 });
 

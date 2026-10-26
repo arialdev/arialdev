@@ -42,7 +42,7 @@ export default function Career() {
       {groups.map((group, index) => <div key={group.name} id={`${id}-panel-${index}`}
         role={enhanced ? 'tabpanel' : undefined} aria-labelledby={enhanced ? `${id}-tab-${index}` : undefined}
         tabIndex={enhanced ? 0 : undefined} hidden={enhanced && selected !== index} className="career-panel">
-        {!enhanced && <h3 className="fallback-heading">{group.name}</h3>}
+        {enhanced ? <h2 className="sr-only">{group.name}</h2> : <h3 className="fallback-heading">{group.name}</h3>}
         <ol className="timeline">
           {group.entries.map((entry) => <li key={entry.organization}>
             <div className="timeline-meta"><span className="eyebrow">{entry.period}</span><span>{entry.organization}</span></div>
