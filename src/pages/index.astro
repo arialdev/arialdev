@@ -28,11 +28,11 @@ import { cvDownloadUrl, profile, skills } from '../data/portfolio';
       </div><p class="about-location">Based in <strong>{profile.location}</strong></p></div>
       <div class="about-copy">
         <p>I’m a senior software engineer. At Nexthink, I build scalable web applications and distributed systems, specialising in React, microfrontends, and Module Federation.</p>
-        <p>I’ve led the migration of 40+ microfrontends and improved React performance by up to 70%. I recently completed an MSc in Artificial Intelligence, where I built an AI-powered SRE agent for incident diagnosis and remediation guidance.</p>
+        <p>I’ve led the migration of 40+ microfrontends and improved React performance by up to 70%. I hold an MSc in Artificial Intelligence. For my master’s thesis, I built an AI-powered SRE agent for incident diagnosis and remediation guidance.</p>
         <h3 data-view-subheading>Skills</h3>
         <ul class="skills">{skills.flatMap((group) => group.items).map((skill) => <li>{skill}</li>)}</ul>
         <div id="experience" tabindex="-1"><Career client:visible/></div>
-        <div class="about-actions"><a class="button" href={cvDownloadUrl} target="_blank" rel="noopener noreferrer" download="Alvaro-Rivas-CV.pdf">Download CV <span class="pdf-label">PDF</span></a><a class="button" href={profile.github} target="_blank" rel="noopener noreferrer">View my full profile!</a></div>
+        <div class="about-actions"><a class="button" href={cvDownloadUrl} target="_blank" rel="noopener noreferrer" download="Alvaro-Rivas-CV.pdf">Download CV <span class="pdf-label">PDF</span></a></div>
       </div>
     </div>
   </section>
