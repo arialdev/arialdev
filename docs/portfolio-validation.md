@@ -14,6 +14,8 @@ Contact keeps one email action in “Let’s build something together” and giv
 
 The CV button now uses Cloudinary attachment delivery and reads Download CV PDF. A real Chrome download produced Alvaro-Rivas-CV.pdf (40,397 bytes), left the portfolio open, and matched the original PDF SHA-256 exactly. The original source URL remains in profile data; no PDF copy or new dependency is added. All 20 browser tests pass.
 
+Menu navigation now fades and slides the overlay in over 320ms, staggers its links, animates the menu icon, and closes over 200ms while revealing the content. Direct section links and the home control use a 140ms exit and 320ms entrance. Native browser animations are cancelled when interrupted, and anchor handling preserves history while preventing premature browser scrolling. Reduced motion switches views immediately and settles active animations when the preference changes. Rapid menu reversals, interrupted section navigation, repeated Home selections, and skip-link focus are covered by regression tests. All 24 desktop/mobile browser tests, accessibility scans, lint, type checks, and the production build pass. Desktop and mobile menu/About screenshots were visually reviewed.
+
 The requested contact address is `contact@arial.dev`. The original code-bracket favicon and home-control logo remain. The blog is a direct link only, and the excluded social profile and CV-only personal details are absent from the portfolio output.
 
 ## Tool versions

@@ -24,7 +24,7 @@ import { cvDownloadUrl, profile, skills } from '../data/portfolio';
     <h2 class="section-title" id="about-heading">About me</h2>
     <div class="about-layout">
       <div class="about-picture"><div class="about-photo-frame">
-        <Image src={portrait} width={720} height={720} widths={[360, 720]} sizes="(max-width: 767px) 280px, 380px" fit="cover" position="south" format="webp" quality={85} alt="Álvaro sitting beside a window overlooking a mountain landscape" loading="lazy"/>
+        <Image src={portrait} width={720} height={720} widths={[360, 720]} sizes="(max-width: 767px) 280px, 380px" fit="cover" position="south" format="webp" quality={85} alt="Álvaro sitting beside a window overlooking a mountain landscape" loading="lazy" draggable="false"/>
       </div><p class="about-location">Based in <strong>{profile.location}</strong></p></div>
       <div class="about-copy">
         <p>I’m a senior software engineer. At Nexthink, I build scalable web applications and distributed systems, specialising in React, microfrontends, and Module Federation.</p>

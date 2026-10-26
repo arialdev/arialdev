@@ -10,6 +10,7 @@ async function openSection(page: Page, name: 'Home' | 'About' | 'Projects' | 'Co
   await page.getByLabel('Navigation menu', { exact: true }).click();
   await page.getByRole('navigation', { name: 'Primary', exact: true }).getByRole('link', { name, exact: true }).click();
   await expect(page.locator(`#${name.toLowerCase()}`)).toBeVisible();
+  await expect(page.locator('main')).toHaveCSS('opacity', '1');
 }
 
 test('static HTML, metadata, and public destinations are correct', async ({ request }) => {
@@ -235,6 +236,70 @@ test('works without JavaScript, including both histories and project details', a
   await expect(download).toHaveAttribute('href', cvDownload);
   await expect(download).toHaveAttribute('download', 'Alvaro-Rivas-CV.pdf');
   await context.close();
+});
+
+test('transitions handle menu reversals, interrupted navigation, and repeated Home selections', async ({ page }) => {
+  const errors: string[] = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('/');
+  const toggle = page.getByLabel('Navigation menu', { exact: true });
+  const menu = page.locator('.site-menu');
+  const nav = page.getByRole('navigation', { name: 'Primary', exact: true });
+  await toggle.click();
+  await expect(nav).toBeVisible();
+  // Reverse the closing animation before it can hide the newly reopened menu.
+  await toggle.evaluate((element) => {
+    if (element instanceof HTMLElement) { element.click(); element.click(); }
+  });
+  await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+  await expect(page.locator('main')).toHaveAttribute('inert', '');
+  await expect(nav).toHaveCSS('opacity', '1');
+  await page.keyboard.press('Escape');
+  await expect(menu).not.toHaveAttribute('open', '');
+  await expect(page.locator('main')).toHaveCSS('opacity', '1');
+
+  await page.getByRole('link', { name: 'About me!', exact: true }).click();
+  await page.getByRole('link', { name: 'Álvaro Rivas home', exact: true }).click();
+  await expect(page.locator('#home')).toBeFocused();
+  await expect(page.locator('#about')).not.toBeVisible();
+  await openSection(page, 'Home');
+  await expect(menu).not.toHaveAttribute('open', '');
+  await expect(page.locator('#home')).toBeFocused();
+  await expect(page.locator('main')).not.toHaveAttribute('inert', '');
+
+  // Skip to content while the outgoing panel is still fading.
+  await page.evaluate(() => {
+    document.querySelector<HTMLAnchorElement>('.home-actions a')!.click();
+    document.querySelector<HTMLAnchorElement>('.skip-link')!.click();
+  });
+  await expect(page.locator('#about')).toBeVisible();
+  await expect(page.locator('main')).toBeFocused();
+  await expect(page.locator('#about')).toHaveCSS('opacity', '1');
+  expect(errors).toEqual([]);
+});
+
+test('navigation is immediate with reduced motion and settles when the preference changes', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+  const result = await page.evaluate(() => {
+    document.querySelector<HTMLAnchorElement>('.home-actions a')!.click();
+    return { view: document.documentElement.dataset.view, focus: document.activeElement?.id, animations: document.getAnimations().length };
+  });
+  expect(result).toEqual({ view: 'about', focus: 'about', animations: 0 });
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.getByLabel('Navigation menu', { exact: true }).click();
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect(page.getByLabel('Navigation menu', { exact: true })).toHaveAttribute('aria-expanded', 'true');
+  await expect(page.locator('main')).toHaveAttribute('inert', '');
+  await page.keyboard.press('Escape');
+  await expect(page.locator('.site-menu')).not.toHaveAttribute('open', '');
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.locator('.home-control').click();
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect(page.locator('#home')).toBeVisible();
+  await expect(page.locator('#home')).toBeFocused();
+  await expect(page.locator('#home')).toHaveCSS('opacity', '1');
 });
 
 test('every section, menu, and project dialog pass automated accessibility checks', async ({ page }) => {

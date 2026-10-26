@@ -6,54 +6,12 @@ const links = [
 ] as const;
 ---
 <header class="site-header">
-  <a href="/#home" class="home-control" aria-label="Álvaro Rivas home"><Logo size={26}/></a>
+  <a href="/#home" class="home-control" aria-label="Álvaro Rivas home" draggable="false"><Logo size={26}/></a>
   <details class="site-menu">
     <summary aria-label="Navigation menu"><span class="menu-lines" aria-hidden="true"></span></summary>
-    <nav aria-label="Primary">{links.map(([href, label]) => <a href={href}>{label}</a>)}</nav>
+    <nav aria-label="Primary">{links.map(([href, label]) => <a href={href} draggable="false">{label}</a>)}</nav>
   </details>
 </header>
 <script>
-  const menu = document.querySelector<HTMLDetailsElement>('.site-menu');
-  const summary = menu?.querySelector('summary');
-  const main = document.querySelector('main');
-  function closeMenu() {
-    if (menu) menu.open = false;
-    if (main) main.inert = false;
-    document.body.classList.remove('menu-open');
-  }
-  menu?.addEventListener('toggle', () => {
-    summary?.setAttribute('aria-expanded', String(menu.open));
-    if (main) main.inert = menu.open;
-    document.body.classList.toggle('menu-open', menu.open);
-  });
-  menu?.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && menu.open) { closeMenu(); summary?.focus(); }
-  });
-  document.querySelector('.site-header')?.addEventListener('click', (event) => {
-    if (event.target instanceof Element && event.target.closest('a')) closeMenu();
-  });
-  document.querySelector('.skip-link')?.addEventListener('click', (event) => {
-    event.preventDefault();
-    closeMenu();
-    main?.focus({ preventScroll: true });
-  });
-
-  if (document.querySelector('[data-view-panel]')) {
-    const resolveView = () => {
-      const hash = location.hash.slice(1);
-      return hash === 'experience' ? 'about' : ['about', 'projects', 'contact'].includes(hash) ? hash : 'home';
-    };
-    function showView(focus: boolean) {
-      const view = resolveView();
-      document.documentElement.dataset.view = view;
-      closeMenu();
-      const target = document.getElementById(location.hash === '#experience' ? 'experience' : view);
-      if (location.hash === '#experience') target?.scrollIntoView({ behavior: 'instant', block: 'start' });
-      else window.scrollTo({ top: 0, behavior: 'instant' });
-      if (focus && target) { target.tabIndex = -1; target.focus({ preventScroll: true }); }
-    }
-    showView(false);
-    window.addEventListener('hashchange', () => showView(true));
-    window.addEventListener('pageshow', () => showView(false));
-  }
+  import '../scripts/navigation';
 </script>
