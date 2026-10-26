@@ -1,0 +1,54 @@
+---
+import Header from '../components/Header.astro';
+import { profile } from '../data/portfolio';
+import '../styles/global.css';
+interface Props { title?: string; description?: string; noindex?: boolean }
+const { title = 'Álvaro Rivas — Senior Software Engineer', description = profile.description, noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const image = new URL('/social-preview.png', Astro.site);
+const structuredData = {
+  '@context': 'https://schema.org', '@type': 'ProfilePage',
+  '@id': new URL('/#profile', Astro.site).href, url: new URL('/', Astro.site).href,
+  mainEntity: {
+    '@type': 'Person', '@id': new URL('/#person', Astro.site).href,
+    name: profile.name, jobTitle: profile.role, url: new URL('/', Astro.site).href,
+    email: profile.email, homeLocation: { '@type': 'Place', name: profile.location },
+    sameAs: [profile.github, profile.linkedin, profile.blog],
+    knowsAbout: ['React', 'Microfrontends', 'Module Federation', 'Distributed systems', 'Artificial intelligence'],
+  },
+};
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>{title}</title><meta name="description" content={description}/>
+    <link rel="canonical" href={canonical}/><link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+    <meta name="theme-color" content="#efa2b4"/>
+    <link rel="preload" href="/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin/>
+    <link rel="preload" href="/fonts/poppins-600-latin.woff2" as="font" type="font/woff2" crossorigin/>
+    {!noindex && <script is:inline>
+      history.scrollRestoration = 'manual';
+      document.documentElement.classList.add('js');
+      const requestedView = location.hash.slice(1);
+      document.documentElement.dataset.view = requestedView === 'experience' ? 'about' : ['about', 'projects', 'contact'].includes(requestedView) ? requestedView : 'home';
+    </script>}
+    {noindex && <meta name="robots" content="noindex, follow"/>}
+    <meta property="og:type" content="website"/><meta property="og:locale" content="en_GB"/>
+    <meta property="og:site_name" content="Álvaro Rivas"/><meta property="og:title" content={title}/>
+    <meta property="og:description" content={description}/><meta property="og:url" content={canonical}/>
+    <meta property="og:image" content={image}/><meta property="og:image:type" content="image/png"/>
+    <meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/>
+    <meta property="og:image:alt" content="Álvaro Rivas — Senior Software Engineer, Madrid, Spain."/>
+    <meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content={title}/>
+    <meta name="twitter:description" content={description}/><meta name="twitter:image" content={image}/>
+    <meta name="twitter:image:alt" content="Álvaro Rivas — Senior Software Engineer, Madrid, Spain."/>
+    {!noindex && <script type="application/ld+json" set:html={JSON.stringify(structuredData).replace(/</g, '\\u003c')}/>}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="background-shapes" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="page-shell"><Header/><main id="main" tabindex="-1"><slot/></main></div>
+  </body>
+</html>

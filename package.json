@@ -1,52 +1,34 @@
 {
-	"name": "arialdev",
-	"description": "Portofolio for Álvaro Rivas (a.k.a. arialdev)",
-	"version": "0.0.1",
-	"packageManager": "pnpm@12.9.1",
-	"scripts": {
-		"start": "astro dev",
-		"build": "astro build",
-		"preview": "astro preview",
-		"check": "astro check",
-		"lint": "oxlint .",
-		"astro": "astro",
-		"test": "playwright test"
-	},
-	"type": "module",
-	"author": "Álvaro Rivas <contact@arial.dev> (https://alvarorivas.dev)",
-	"keywords": [
-		"portfolio",
-		"astro",
-		"react",
-		"typescript"
-	],
-	"repository": "github:arialdev/arialdev",
-	"homepage": "https://alvarorivas.dev",
-	"bugs": {
-		"url": "https://github.com/arialdev/arialdev/issues",
-		"email": "contact@arial.dev"
-	},
-	"engines": {
-		"node": "24.x",
-		"pnpm": ">=12"
-	},
-	"dependencies": {
-		"@tailwindcss/vite": "^4.3.3",
-		"astro": "^7.3.5",
-		"astro-icon": "^1.2.0",
-		"astro-navbar": "^2.4.0",
-		"astro-seo": "^1.2.0",
-		"tailwindcss": "^4.3.3"
-	},
-	"devDependencies": {
-		"@astrojs/check": "^0.9.10",
-		"@iconify-json/simple-icons": "^1.2.98",
-		"@playwright/test": "^1.63.0",
-		"@types/node": "^24.19.1",
-		"oxlint": "^1.86.0",
-		"prettier": "^3.9.9",
-		"prettier-plugin-astro": "^1.1.0",
-		"prettier-plugin-tailwindcss": "^0.8.1",
-		"typescript": "^6.0.3"
-	}
+  "name": "alvaro-rivas-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.15.0",
+  "engines": { "node": ">=26.12.1 <27", "pnpm": "12.15.0" },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "lint": "oxlint",
+    "check": "astro check",
+    "test": "playwright test",
+    "audit:mobile": "lighthouse http://127.0.0.1:4321/ --chrome-flags=--headless=new --only-categories=performance,accessibility,best-practices,seo --enable-error-reporting=false --output=json --output=html"
+  },
+  "dependencies": {
+    "@astrojs/react": "7.1.1",
+    "astro": "7.4.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.12",
+    "@axe-core/playwright": "4.14.0",
+    "@playwright/test": "1.64.1",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "lighthouse": "13.5.0",
+    "oxlint": "1.89.0",
+    "typescript": "6.0.3"
+  }
 }
