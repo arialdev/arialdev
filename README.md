@@ -14,7 +14,7 @@ I build React microfrontends and distributed systems at Nexthink. I love doing g
 ### Skills
 
 <p>
-  <img src="https://i.icoziv.workers.dev/icons?i=reactjs,typescript,nodejs,docker,java,kafka,amazonwebservices,kubernetes,tensorflow,keras, huggingface&theme=dark&perline=6" width="328" alt="React, TypeScript, Node.js, Docker, Java, Kafka, AWS, Kubernetes, TensorFlow, and Keras" />
+  <img src="https://i.icoziv.workers.dev/icons?i=reactjs,typescript,nodejs,docker,java,kafka,amazonwebservices,kubernetes,tensorflow,keras, huggingface,playwright&theme=dark&perline=6" width="328" alt="React, TypeScript, Node.js, Docker, Java, Kafka, AWS, Kubernetes, TensorFlow, and Keras" />
 </p>
 
 ### Find me around the web
