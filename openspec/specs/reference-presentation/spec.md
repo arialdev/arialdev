@@ -46,7 +46,7 @@ The portfolio SHALL remain readable without backdrop-filter support. Any optiona
 - **AND** no navigation or content depends on an animation completing
 
 ### Requirement: Reference-style typing subtitle
-The hero SHALL cycle through Senior Software Engineer, Microfrontends Expert, Module Federation Master, Engineering Enthusiast, Clean Design Lover, Distributed Systems Builder, and React Sailor using native TypeScript typing and erasing, reading pauses, a blinking caret, and the correct indefinite article. The animation SHALL reserve space for all phrases, omit the pause/resume control at the user’s request, suspend while the document or home view is hidden, and show a static professional role without JavaScript or with reduced motion. Assistive technology SHALL receive a stable complete sentence without per-character announcements.
+The hero SHALL cycle through Senior Software Engineer, Microfrontends Builder, Engineering Enthusiast, Module Federation Specialist, Clean Design Lover, Distributed Systems Builder, React Sailor, AI Explorer, Software Architecture Enthusiast, and Curious Problem Solver using native TypeScript typing and erasing, reading pauses, a blinking caret, and the correct indefinite article. The animation SHALL reserve space for all phrases, omit the pause/resume control at the user’s request, suspend while the document or home view is hidden, and show a static professional role without JavaScript or with reduced motion. Assistive technology SHALL receive a stable complete sentence without per-character announcements.
 
 #### Scenario: Visitor reads the animated subtitle
 - **WHEN** motion is allowed and Home is visible

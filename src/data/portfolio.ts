@@ -16,12 +16,15 @@ export interface HeroPhrase { article: 'a' | 'an'; text: string }
 
 export const heroPhrases: readonly HeroPhrase[] = [
   { article: 'a', text: profile.role },
-  { article: 'a', text: 'Microfrontends Expert' },
-  { article: 'a', text: 'Module Federation Master' },
+  { article: 'a', text: 'Microfrontends Builder' },
   { article: 'an', text: 'Engineering Enthusiast' },
+  { article: 'a', text: 'Module Federation Specialist' },
   { article: 'a', text: 'Clean Design Lover' },
   { article: 'a', text: 'Distributed Systems Builder' },
   { article: 'a', text: 'React Sailor' },
+  { article: 'an', text: 'AI Explorer' },
+  { article: 'a', text: 'Software Architecture Enthusiast' },
+  { article: 'a', text: 'Curious Problem Solver' },
 ];
 
 // Professional facts: supplied CV. Destinations: https://alvarorivas.dev/.

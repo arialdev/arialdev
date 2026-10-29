@@ -69,11 +69,12 @@ test('subtitle types and erases all phrases and keeps its layout and accessible 
       role.dataset.seen = JSON.stringify([...seen]);
     }).observe(role.querySelector('[data-role-text]')!, { childList: true });
   });
-  await page.clock.runFor(45000);
+  await page.clock.runFor(70000);
   const seen = JSON.parse(await role.getAttribute('data-seen') ?? '[]');
   expect(seen).toEqual(expect.arrayContaining([
-    'a Senior Software Engineer', 'a Microfrontends Expert', 'a Module Federation Master',
-    'an Engineering Enthusiast', 'a Clean Design Lover', 'a Distributed Systems Builder', 'a React Sailor',
+    'a Senior Software Engineer', 'a Microfrontends Builder', 'an Engineering Enthusiast',
+    'a Module Federation Specialist', 'a Clean Design Lover', 'a Distributed Systems Builder',
+    'a React Sailor', 'an AI Explorer', 'a Software Architecture Enthusiast', 'a Curious Problem Solver',
   ]));
   await expect(role.locator('.sr-only')).toHaveText('I am a Senior Software Engineer.');
   await expect(role.locator('.role-line')).toHaveAttribute('aria-hidden', 'true');
