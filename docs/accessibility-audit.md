@@ -6,11 +6,11 @@ Revisión inicial del commit `40fde81` en el servidor de desarrollo de Astro, co
 
 Los tres hallazgos se han corregido en el código de trabajo:
 
-| Hallazgo | Corrección | Verificación |
-| --- | --- | --- |
-| Contraste del texto naranja | El acento pasa de `#ad3300` a `#842700`. | Mínimo muestreado para texto normal: **5,12:1**, superior a 4,5:1. Se recorrieron las cuatro vistas con scroll en escritorio y móvil, el menú, el diálogo y un botón con hover. |
-| Apertura consecutiva de proyectos | Escape y el botón de cierre completan el cierre, limpian la selección y devuelven el foco en su propio evento. Un evento nativo `close` pendiente ya no puede borrar una selección posterior. | **6 de 6** repeticiones aisladas correctas. La regresión recorre los proyectos varias veces con Espacio/Escape y también comprueba el botón de cierre. |
-| H1 ausente en vistas secundarias | La navegación con JavaScript promueve los títulos a H1 nativos y ajusta los subtítulos a H2. Las islas conservan la jerarquía correspondiente. | Un H1 accesible por vista activa y auditoría axe completa sin infracciones confirmadas. Sin JavaScript, se mantiene un único H1 y las secciones siguen siendo H2. |
+| Hallazgo                          | Corrección                                                                                                                                                                                    | Verificación                                                                                                                                                                    |
+| --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Contraste del texto naranja       | El acento pasa de `#ad3300` a `#842700`.                                                                                                                                                      | Mínimo muestreado para texto normal: **5,12:1**, superior a 4,5:1. Se recorrieron las cuatro vistas con scroll en escritorio y móvil, el menú, el diálogo y un botón con hover. |
+| Apertura consecutiva de proyectos | Escape y el botón de cierre completan el cierre, limpian la selección y devuelven el foco en su propio evento. Un evento nativo `close` pendiente ya no puede borrar una selección posterior. | **6 de 6** repeticiones aisladas correctas. La regresión recorre los proyectos varias veces con Espacio/Escape y también comprueba el botón de cierre.                          |
+| H1 ausente en vistas secundarias  | La navegación con JavaScript promueve los títulos a H1 nativos y ajusta los subtítulos a H2. Las islas conservan la jerarquía correspondiente.                                                | Un H1 accesible por vista activa y auditoría axe completa sin infracciones confirmadas. Sin JavaScript, se mantiene un único H1 y las secciones siguen siendo H2.               |
 
 Pasan **26 pruebas** tanto contra desarrollo como contra la compilación de producción, además del linter, `astro check` y la compilación. La suite incluye ahora una medición de contraste renderizado en `tests/accessibility.spec.ts`, pues los fondos translúcidos siguen provocando resultados `incomplete` en axe. Sus resultados se guardan en `test-results/**/contrast.json`.
 
@@ -20,10 +20,10 @@ Los atributos `tabindex="-1"` se conservan: los avisos descritos abajo siguen si
 
 En Home se reproducen exactamente estos avisos de `a11y-no-noninteractive-tabindex`:
 
-| Elemento | Atributo | Uso |
-| --- | --- | --- |
-| `main#main` | `tabindex="-1"` | Recibir el foco desde «Skip to content». |
-| `section#home` | `tabindex="-1"` | Recibir el foco al volver a Home. |
+| Elemento       | Atributo        | Uso                                      |
+| -------------- | --------------- | ---------------------------------------- |
+| `main#main`    | `tabindex="-1"` | Recibir el foco desde «Skip to content». |
+| `section#home` | `tabindex="-1"` | Recibir el foco al volver a Home.        |
 
 Son falsos positivos en este contexto. La regla instalada de Astro, en `node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/a11y.js:482`, marca estos elementos por tener `tabindex` sin distinguir el valor negativo. `-1` permite enfocar mediante JavaScript sin introducir una parada en la navegación con Tab, tal como explica la [guía de teclado de W3C](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#keyboardnavigationbetweencomponents). Eliminarlo perjudicaría el salto al contenido y la gestión del foco.
 
@@ -37,15 +37,15 @@ Recomendación: conservar estos atributos y documentar el falso positivo. No añ
 
 El acento `#ad3300` no alcanza siempre el contraste necesario sobre el degradado y los círculos detrás del cristal. Axe devuelve muchos resultados `incomplete` para `color-contrast`: no puede resolver automáticamente estos fondos. Por eso se midieron también fondos renderizados, conservando las transparencias.
 
-| Texto | Vista y dispositivo | Contraste mínimo muestreado |
-| --- | --- | --- |
-| Senior Software Engineer | Home, escritorio | 3,62:1 |
-| Senior Software Engineer | Home, móvil | 4,32:1 |
-| About me! | Home, escritorio | 4,47:1 |
-| Experience | About, escritorio | 4,27:1 |
-| View all projects | Projects, móvil | 4,21:1 |
-| Say hello! | Contact, escritorio | 4,30:1 |
-| Say hello! | Contact, móvil | 4,28:1 |
+| Texto                    | Vista y dispositivo | Contraste mínimo muestreado |
+| ------------------------ | ------------------- | --------------------------- |
+| Senior Software Engineer | Home, escritorio    | 3,62:1                      |
+| Senior Software Engineer | Home, móvil         | 4,32:1                      |
+| About me!                | Home, escritorio    | 4,47:1                      |
+| Experience               | About, escritorio   | 4,27:1                      |
+| View all projects        | Projects, móvil     | 4,21:1                      |
+| Say hello!               | Contact, escritorio | 4,30:1                      |
+| Say hello!               | Contact, móvil      | 4,28:1                      |
 
 Estos textos requieren 4,5:1. El subtítulo usa 20px y peso 600; la medición aplica el umbral conservador de texto normal. El requisito y la prohibición de redondear un valor insuficiente se describen en [WCAG 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html).
 

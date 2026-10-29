@@ -40,12 +40,12 @@ Direct versions and the PNPM lockfile are pinned. An isolated frozen-lockfile in
 
 Lighthouse 13.5.0, headless Chrome 155, simulated mobile profile: 412 × 823 viewport, 1.75 device scale, 150 ms RTT, 1638.4 Kbps throughput, and 4× CPU slowdown. Storage reset is enabled. The tracked [audit summary](portfolio-audits.json) records configuration, measured build hash, scores, metrics, and timestamps. These runs precede the subsequent icon, menu, link-style, and portrait-interaction refinements, which passed the production build and browser checks. Local reports are regenerated in `test-results/lighthouse/` by the audit command; `pnpm test` clears that directory.
 
-| Category | Run 1 | Run 2 | Run 3 | Median |
-| --- | --- | --- | --- | --- |
-| Performance | 99 | 99 | 99 | 99 |
-| Accessibility | 100 | 100 | 100 | 100 |
-| SEO | 100 | 100 | 100 | 100 |
-| Best Practices | 100 | 100 | 100 | 100 |
+| Category       | Run 1 | Run 2 | Run 3 | Median |
+| -------------- | ----- | ----- | ----- | ------ |
+| Performance    | 99    | 99    | 99    | 99     |
+| Accessibility  | 100   | 100   | 100   | 100    |
+| SEO            | 100   | 100   | 100   | 100    |
+| Best Practices | 100   | 100   | 100   | 100    |
 
 Median LCP: **2101.6 ms**. CLS: **0.0030**. TBT: **0 ms**. Initial transfer: **202.1 KiB**. All specified acceptance budgets pass. Total compressed JavaScript across eventual island bundles and inline executable scripts is **74.9 KiB**, below 80 KiB. Initial transfer remains below 500 KiB, including local fonts and the portrait.
 

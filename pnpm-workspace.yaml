@@ -2,7 +2,7 @@ autoInstallPeers: false
 strictPeerDependencies: true
 # Lighthouse tracing dependencies require API <1.10; this is the highest matching release.
 overrides:
-  '@opentelemetry/api': 1.9.1
+  "@opentelemetry/api": 1.9.1
 minimumReleaseAge: 0
 onlyBuiltDependencies:
   - esbuild
